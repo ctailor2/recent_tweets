@@ -1,7 +1,20 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+$(document).ready(function(event) {
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+	$("#loading").hide();
+
+	$("#username").submit(function(event){
+		var form = this;
+		event.preventDefault();
+		var username = $(this).find("input").val();
+		$.get("/" + username, function(response){
+			$(".tweets").remove();
+			$(form).append(response);
+		});
+	});
+
+	$(document).ajaxStart(function () {
+	    $("#loading").show();
+	}).ajaxStop(function () {
+	    $("#loading").hide();
+	});
 });

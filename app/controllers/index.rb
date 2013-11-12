@@ -1,3 +1,7 @@
+get '/' do
+  erb :home
+end
+
 get '/:username' do
 #display 10 most recent tweets
   @username = params[:username]
@@ -14,5 +18,5 @@ get '/:username' do
 
   @tweets = @user.tweets.limit(10)
   
-  erb :index
+  erb :index, :layout => false
 end

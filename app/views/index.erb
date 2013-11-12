@@ -1,8 +1,7 @@
-<div class="container">
-  <h1>Last 10 Tweets by <%= @username %><h1>
+<div class="tweets">
+  <h2>Last 10 Tweets by <%= @username %><h2>
   
   <% @tweets.each do |tweet| %>
      <p style="font-size:14px"><%= tweet.text %></p>
   <% end %>
-
 </div>
